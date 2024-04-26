@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodApp.Views.StoresView"
+             Title="StoresView"
+             NavigationPage.HasNavigationBar="False"
+             Background="#4F3F9B">
+
+    <Grid RowDefinitions=".2*,.8*">
+        <VerticalStackLayout Spacing="10">
+            <Label Margin="25,25,0,0"
+                   FontAttributes="Bold"
+                   FontFamily="bold"
+                   Text="DELIVERY ADDRES"
+                   TextColor="White"/>
+            <Button Text="Profil"
+                Margin="250,-40,0,0"
+                    WidthRequest="80"
+                    HeightRequest="50"
+                FontAttributes="Bold"
+                FontFamily="bold"
+                TextColor="#3F4FB9"
+                BackgroundColor="White"
+                Clicked="Button_Clicked" /> 
+            
+            <Grid Margin="25,10,0,0" ColumnDefinitions="Auto,*">
+                <Label FontFamily="regular"
+                       Text="1030 Burton Avenue"
+                       TextColor="White"
+                       VerticalOptions="Center"/>
+                <Image Grid.Column="1"
+                       Margin="15,0,0,0"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"
+                       WidthRequest="15">
+                    <Image.Source>
+                        <FontImageSource FontFamily="AwesomeSolid"
+                                         Glyph="&#xf078;"
+                                         Color="White"/>
+                    </Image.Source>
+                </Image>
+
+            </Grid>
+            <Grid Margin="25,10,0,0" ColumnDefinitions=".9*,.1*" >
+                <Border Padding="0" StrokeShape="RoundRectangle 8,8,8,8">
+                    
+                        <SearchBar Margin="0,-13,0,0 " Grid.Column="1"
+                       FontFamily="bold"
+                       Placeholder="Search a restaurant or dish"
+                       PlaceholderColor="#9D9D9D"
+                       TextColor="White"
+                       SearchCommand="{Binding SearchCommand}"
+                       SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}" />
+                    
+                    
+                    
+                </Border>
+            </Grid>
+            <Image x:Name="MenuIcon"
+                   Margin="25,10,0,0"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   WidthRequest="20">
+                <Image.Source>
+                    <FontImageSource FontFamily="AwesomeSolid"
+                                     Glyph="&#xf0c9;"
+                                     Color="White"/>
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding MenuTappedCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+        </VerticalStackLayout>
+        <Grid  Grid.Row="1">
+            <RoundRectangle BackgroundColor="#F2F1F6"
+                            CornerRadius="25,25,0,0"/>
+            <CollectionView ItemsSource="{Binding Stores}" >
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="15" Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="20,20,20,0" HeightRequest="250"
+                                      RowDefinitions=".6*,.4*">
+                            <RoundRectangle Grid.RowSpan="2"
+                                                    BackgroundColor="White" CornerRadius="10">
+                                <RoundRectangle.Shadow>
+                                    <Shadow Brush="#CFD0D4"
+                                Opacity="0.8"
+                                                    Offset="10,10"
+                                                    />
+                                </RoundRectangle.Shadow>
+                            </RoundRectangle>
+                            <Grid ColumnDefinitions=".4*,.2*,.4*"
+                                  RowDefinitions=".6*,.4*">
+                                <Image Grid.RowSpan="2"
+                                       Grid.ColumnSpan="3"
+                                       Aspect="AspectFill"
+                                       Source="{Binding Header}"/>
+                                <Grid Grid.Row="1"
+                                      Margin="0,0,0,15"
+                                      HeightRequest="100"
+                                      HorizontalOptions="Start"
+                                      VerticalOptions="Center"
+                                      WidthRequest="100">
+                                    <Border Margin="0,0,0,10" HeightRequest="70"
+                                            HorizontalOptions="Center"
+                                            StrokeShape="Ellipse"
+                                            StrokeThickness="4">
+                                        <Border.Stroke>
+                                            <LinearGradientBrush EndPoint="0,1">
+                                                <GradientStop Offset="0.0" Color="#FEFEEF"/>
+                                                <GradientStop Offset="0.25" Color="#ebd570"/>
+                                                <GradientStop Offset="0.5" Color="#FF94C3"/>
+                                                <GradientStop Offset="0.75" Color="#A573E4"/>
+                                                <GradientStop Offset="1.0" Color="#A9E2EE"/>
+
+
+                                            </LinearGradientBrush>
+                                        </Border.Stroke>
+                                        <Image HorizontalOptions="Center"
+                                               Source="{Binding Logo}"/>
+                                    </Border>
+                                </Grid>
+                                <Grid Grid.Row="1" Grid.Column="2" >
+                                    <RoundRectangle CornerRadius="10"
+                                                    Fill="#F8F8F7"
+                                                    HeightRequest="35"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"
+                                                    WidthRequest="75"/>
+                                    <HorizontalStackLayout HorizontalOptions="Center"
+                                                           VerticalOptions="Center">
+                                        <Image Margin="0,0,15,0"
+                                               VerticalOptions="Center"
+                                               WidthRequest="15">
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="AwesomeSolid"
+                                                                 Glyph="&#xf005;"
+                                                                 Color="Gold"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <Label Grid.Row="1"
+                                               FontFamily="bold"
+                                               Text="4.5"
+                                               TextColor="Black"
+                                               VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+
+
+                                </Grid>
+
+
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="0,10,0,0"
+                                              Padding="10" ColumnDefinitions="*,*,*" RowDefinitions="*,*">
+                                <Label Grid.ColumnSpan="3"
+                                                   FontFamily="bold"
+                                                   FontSize="Large"
+                                                   HorizontalTextAlignment="Start"
+                                                   Text="{Binding Name}"
+                                                   TextColor="Black"/>
+
+                                <Label Grid.Row="1"
+                                                   Grid.Column="2"
+                                                   Margin="0,10,0,0"
+                                                   FontFamily="regular"
+                                                   HorizontalOptions="End"
+                                                   Text="{Binding DeliveryTime}"
+                                                   TextColor="Black"
+                                                   VerticalOptions="Start"/>
+                                <Label Grid.Row="1"
+                                                   Margin="0,10,0,0"
+                                                   FontFamily="regular"
+                                                   Text="{Binding Minimum, StringFormat='{0:c} minimum'}"
+                                                   TextColor="Black"
+                                                   VerticalOptions="Center"/>
+                                <HorizontalStackLayout 
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="0,10,0,0"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="Start">
+                                    <Image HeightRequest="15" VerticalOptions="Center">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="AwesomeSolid"
+                                                Glyph="&#xf48b;"
+                                                Color="Black"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <Label Margin="10,0,0,0"
+                                           FontFamily="regular"
+                                           HorizontalTextAlignment="Center"
+                                           Text="{Binding ServiceFee, StringFormat='{0:c}'}"
+                                           TextColor="Black"
+                                           VerticalOptions="Center"/>
+
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,68 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodApp.Views.ProfileView"
+             Title="Profil"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame">
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Margin" Value="10" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <VerticalStackLayout BackgroundColor="#4F3FB9">
+            <Frame>
+                <StackLayout >
+                    <Image x:Name="PersonalInfoIcon" Source="infoicon.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding PersonalInfoCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                   <Label                  Margin="250,0,0,0"    Grid.Row="1"
+                                               FontFamily="bold"
+                                               Text="CHANGE INFO"
+                                               TextColor="Black"
+                                               VerticalOptions="Center"/>
+                    <Label Text="Personal Info" FontAttributes="Bold" />
+                </StackLayout>
+            </Frame>
+            <Frame>
+                <StackLayout>
+                    <Image x:Name="CardInfoIcon" Source="card.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CardInfoCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    
+                    <Label Text="Card Info" FontAttributes="Bold" />
+                    <Label                  Margin="250,0,0,0"    Grid.Row="1"
+                             FontFamily="bold"
+                             Text="CHANGE INFO"
+                             TextColor="Black"
+                             VerticalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame>
+                <StackLayout>
+                    <Image x:Name="OrderInfoIcon" Source="ordericon.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OrderInfoCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label                  Margin="250,0,0,0"    Grid.Row="1"
+                             FontFamily="bold"
+                             Text="CHANGE INFO"
+                             TextColor="Black"
+                             VerticalOptions="Center"/>
+                    <Label Text="Order Info" FontAttributes="Bold" />
+                </StackLayout>
+            </Frame>
+        </VerticalStackLayout>
+        <BoxView Color="Gray"
+                 Opacity="0.5"
+                 VerticalOptions="End"
+                 HeightRequest="5" />
+    </Grid>
+</ContentPage>
